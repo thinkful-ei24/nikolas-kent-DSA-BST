@@ -91,19 +91,45 @@ class BinarySearchTree {
   }
 }
 
+function findHeight(bst) {
+  let left = 0;
+  let right = 0;
+  if (bst === null) {
+    return 0;
+  } else if (bst.left === null && bst.right === null) {
+    return 1;
+  }
+
+  if (bst.left !== null) {
+    left = findHeight(bst.left);
+  }
+  if (bst.right !== null) {
+    right = findHeight(bst.right);
+  }
+
+  if (left > right) {
+    return 1 + left;
+  } else {
+    return 1 + right;
+  }
+}
+
 function main() {
   const BST = new BinarySearchTree();
-  BST.insert(3, 'dog');
-  BST.insert(1, 'cat');
-  BST.insert(4, 'bat');
-  BST.insert(6, 'gnat');
+  BST.insert(30, 'dog');
+  BST.insert(10, 'cat');
+  BST.insert(40, 'bat');
+  BST.insert(60, 'gnat');
   console.log(BST, 'line 100');
-  BST.insert(9, 'shat');
-  BST.insert(2, 'wombat');
-  BST.insert(5, 'rat');
-  BST.insert(7, 'bird');
+  BST.insert(90, 'shat');
+  BST.insert(20, 'wombat');
+  BST.insert(50, 'rat');
+  BST.insert(70, 'bird');
+  BST.insert(15, 'goat');
+  BST.insert(65, 'goat');
 
   console.log(BST);
+  console.log(findHeight(BST));
 }
 
 main();
